@@ -13,5 +13,5 @@
 	<target name="package" depends="basepackage"/>
 
 	<target name="docs" depends="basedocs"/>
-	
+
 </project>

@@ -1,0 +1,30 @@
+<xml-java-binding-schema version="1.0ea">
+	<options package="com.brassbullet.dbutils.xml.base"/>
+	<element name="Database" type="class" root="true" class="DatabaseBase">
+		<content>
+			<element-ref name="Comment"/>
+			<element-ref name="Table" property="tables" collection="list"/>
+		</content>
+	</element>
+	<element name="Table" type="class" class="TableBase">
+		<content>
+			<element-ref name="Comment"/>
+			<element-ref name="PrimaryKey"/>
+			<element-ref name="Field" property="fields" collection="list"/>
+		</content>
+	</element>
+	<element name="PrimaryKey" type="class" class="PrimaryKeyBase">
+		<content>
+			<element-ref name="Field" property="fields" collection="list"/>
+		</content>
+	</element>
+	<element name="Field" type="class" class="FieldBase">
+		<attribute name="allowNull" convert="boolean"/>
+	</element>
+	<element name="Reference" type="class" class="ReferenceBase">
+		<attribute name="mustExist" convert="boolean"/>
+		<attribute name="onModify" convert="IntegrityActions"/>
+		<attribute name="onDelete" convert="IntegrityActions"/>
+	</element>
+	<enumeration name="IntegrityActions" members="cascade rollback nothing null"/>
+</xml-java-binding-schema>

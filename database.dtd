@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!ELEMENT Database (Comment?,Table+)>
+<!ATTLIST Database
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+	url CDATA #REQUIRED
+	author CDATA #IMPLIED
+	version CDATA #IMPLIED
+	date CDATA	#IMPLIED>
+
+<!ELEMENT Comment (#PCDATA)>
+
+<!ELEMENT Table (Comment?,PrimaryKey,Field*)>
+<!ATTLIST Table name CDATA #REQUIRED>
+
+<!ELEMENT PrimaryKey (Field+)>
+
+<!ELEMENT Field (Comment?,Reference?)>
+<!ATTLIST Field 
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+	allowNull (true|false) "true">
+
+<!ELEMENT Type (#PCDATA)>
+
+<!ELEMENT Reference EMPTY>
+<!ATTLIST Reference
+	table CDATA #REQUIRED
+	field CDATA #REQUIRED
+	mustExist (true|false) "true"
+	onDelete (cascade|rollback|null|nothing) "rollback"
+	onModify (cascade|rollback|null|nothing) "cascade">
